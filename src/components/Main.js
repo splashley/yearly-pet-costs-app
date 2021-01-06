@@ -1,19 +1,16 @@
 import React from "react";
-
-import AddCategoryButton from "../components/AddCategoryButton";
-import EstimatedAmountText from "../components/EstimatedAmountText";
-// import CostSlider from "../components/Slider";
-import PieChart from "../components/PieChart";
-import Total from "../components/Total";
+import LeftSide from "../components/LeftSide";
+import RightSide from "../components/RightSide";
 
 const Main = () => {
   return (
-    <div className="text-black bg-white shadow-md">
-      <AddCategoryButton />
-      <EstimatedAmountText />
-      {/* <CostSlider /> */}
-      <PieChart />
-      <Total />
+    <div className="flex flex-row text-black bg-white shadow-md p-8">
+      <div>
+        <LeftSide />
+      </div>
+      <div>
+        <RightSide />
+      </div>
     </div>
   );
 };
