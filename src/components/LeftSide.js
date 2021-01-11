@@ -1,14 +1,14 @@
 import React from "react";
 import AddCategoryButton from "../components/AddCategoryButton";
 import EstimatedAmountText from "../components/EstimatedAmountText";
-// import CostSlider from "../components/Slider";
+// import CategoryNameAndCosts from "../components/CategoryNameAndCosts";
 
-const LeftSide = () => {
+const LeftSide = (props) => {
   return (
     <div>
       <AddCategoryButton />
       <EstimatedAmountText />
-      {/* <CostSlider /> */}
+      {/* <CategoryNameAndCosts /> */}
     </div>
   );
 };

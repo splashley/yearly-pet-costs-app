@@ -2,6 +2,10 @@ import React from "react";
 import Slider from "react-rangeslider";
 import "react-rangeslider/lib/index.css";
 
+const CategoryNameAndCosts = () => {
+  return <div>THIS IS A TEST</div>;
+};
+
 // class CostSlider extends Component {
 //   constructor(props, context) {
 //     super(props, context);
@@ -28,4 +32,4 @@ import "react-rangeslider/lib/index.css";
 //   }
 // }
 
-// export default CostSlider;
+export default CategoryNameAndCosts;

@@ -1,22 +1,30 @@
 import React from "react";
 import addBtn from "../assets/addBtn.png";
+import CategorySlider from "./CategoryNameAndCosts";
 
 const AddCategoryButton = () => {
+  React.useEffect(() => {
+    const CategoryDiv = document.querySelector(CategoryList);
+  }, []);
+
+  function addCategory() {
+    // Creates a slider component
+    let testSlider = React.createElement(CategorySlider);
+  }
+
   return (
     <div className="flex">
       <div>
-        <button>
-          <img src={addBtn} className="w-6" alt="Add a Category" />
+        <button onClick={addCategory} type="button">
+          <img
+            src={addBtn}
+            className="w-6 pl-1.5 text-center text-black font-bold"
+            alt="Add a Category"
+          />
+          ADD CATEGORY
         </button>
       </div>
-      <div>
-        <a
-          href="www.google.com"
-          className="pl-1.5 text-center text-black font-bold"
-        >
-          ADD CATEGORY
-        </a>
-      </div>
+      <div id="CategoryList"></div>
     </div>
   );
 };

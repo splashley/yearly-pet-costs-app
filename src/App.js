@@ -1,14 +1,16 @@
-import React from "react";
-import Header from "./components/Header";
-import Main from "./components/Main";
-import Footer from "./components/Footer";
+import React, { useState } from "react";
+import Main from "./components/MainCopy";
 
 function App() {
   return (
     <div className="bg-glacier py-10 px-32 h-screen font-quicksand">
-      <Header />
+      <h1 className="p-10 text-6xl text-center text-white font-bold">
+        HOW MUCH WILL YOUR PET(S) ROUGHLY COST THIS YEAR?
+      </h1>
       <Main />
-      <Footer />
+      <h1 className="p-5 text-sm text-center text-white font-bold">
+        MADE WITH LOVE BY ASHLEY
+      </h1>
     </div>
   );
 }

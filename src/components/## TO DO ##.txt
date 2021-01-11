@@ -1,0 +1,24 @@
+## TO DO ##
+
+- Add Category
+ - Creates a Slider component
+
+- Categories (Slider component)
+ - User has to input a category name when the
+   component is created
+ - User inputs an amount between 1 and 500 for a
+   monthly cost
+ - The amount the user inputs should be sent to the
+   PieChart component and the Total Component
+ - User can press X to remove the category
+  - This change should reflect on the PieChart and
+    Total amount
+
+- PieChart
+  - Receives data from Slider component and using that
+    data, will display a piechart for each category
+
+- Total
+  - Receives data from Slider component and the sum
+    of the monthly costs are multiplied by 12 which
+    is displayed to the user
