@@ -3,13 +3,8 @@ import addBtn from "../assets/addBtn.png";
 import CategorySlider from "./CategoryNameAndCosts";
 
 const AddCategoryButton = () => {
-  React.useEffect(() => {
-    const CategoryDiv = document.querySelector(CategoryList);
-  }, []);
-
   function addCategory() {
-    // Creates a slider component
-    let testSlider = React.createElement(CategorySlider);
+    React.createElement(CategorySlider);
   }
 
   return (
