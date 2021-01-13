@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import addBtn from "../assets/addBtn.png";
+// import { UserInfoContext } from "../UserInfoContext";
 
 const Main = () => {
-  const [categoryAndAmounts, setCategoryAndAmounts] = useState([]);
+  const costInfo = [{ categoryName: "", monthlyAmount: "" }];
+  const [list, setList] = React.useState(costInfo);
 
-  const [totalAmount, setTotalAmount] = useState({
-    amount: 0,
-  });
+  function yearlyCosts() {}
 
   return (
     <div className="flex flex-row text-black bg-white shadow-md p-8">
@@ -14,13 +14,10 @@ const Main = () => {
         <div className="flex">
           <div>
             <button
-              onClick={() =>
-                setCategoryAndAmounts([
-                  ...categoryAndAmounts,
-                  `blah blah blah ${categoryAndAmounts}`,
-                ])
-              }
-              type="button"
+              onClick={() => {
+                const array = [...list, costInfo];
+                setList(array);
+              }}
             >
               <img
                 src={addBtn}
@@ -35,11 +32,31 @@ const Main = () => {
           ENTER YOUR ESTIMATED AMOUNTS PER MONTH FOR EACH CATEGORY
         </h1>
         <div id="CategoryList">
-          <ul>
-            {categoryAndAmounts.map((name) => (
-              <li>{name}</li>
-            ))}
-          </ul>
+          {list.map((el, index) => {
+            return (
+              <div
+                key={index}
+                className="flex flex-row p-4 my-2 border-solid border-2 border-grey rounded-sm"
+              >
+                <input
+                  name="categoryName"
+                  type="text"
+                  placeholder="Enter a category here"
+                  // value={el.categoryName}
+                  onChange={(e) => {}}
+                ></input>
+                <input
+                  name="monthlyAmount"
+                  type="number"
+                  placeholder="$0"
+                  // value={el.monthlyAmount}
+                  onChange={(e) => {
+                    setList(e.target.value);
+                  }}
+                ></input>
+              </div>
+            );
+          })}
         </div>
       </div>
       <div className="right-side">
