@@ -7,6 +7,7 @@ const Main = () => {
     {
       categoryName: "",
       monthlyAmount: "",
+      color: generateRandomColour(), // ! essentialy we are just calling our color function when initiating a new category
     },
   ];
 
@@ -71,7 +72,7 @@ const Main = () => {
       optionsObject.push({
         title: category.categoryName,
         value: Number(category.monthlyAmount),
-        color: generateRandomColour(),
+        color: category.color,
       });
     });
     setChartOptions(optionsObject);
