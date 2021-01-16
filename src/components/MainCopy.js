@@ -79,26 +79,34 @@ const Main = () => {
   }
 
   return (
-    <div className="flex flex-row text-black bg-white shadow-md p-8">
-      <div className="left-side">
-        <div className="flex">
-          <div>
+    <div className="m-4 p-4 overflow-hidden flex flex-col text-black bg-white shadow-md">
+      <div className="p-2">
+        <div id="pieChart" className="p-2">
+          <PieChart data={chartOptions} />
+        </div>
+        <div className="my-2 text-xs font-bold text-center">
+          TOTAL EST: ${runningTotal} PER YEAR
+        </div>
+      </div>
+      <div className="">
+        <div className="">
+          <div className="flex flex-column">
             <button
-              className="align-baseline"
+              className="flex text-sm p-1 items-center border-solid border-2 border-gray-50 rounded"
               onClick={() => {
                 addEmptyCategory();
               }}
             >
               <img
                 src={addBtn}
-                className="w-6 pl-1.5 text-center text-black font-bold"
+                className="w-6 text-black font-bold"
                 alt="Add a Category"
               />
-              ADD CATEGORY
+              &nbsp;&nbsp;ADD CATEGORY
             </button>
           </div>
         </div>
-        <h1 className="text-black text-xs">
+        <h1 className="my-3 text-left text-xs text-black">
           ENTER YOUR ESTIMATED AMOUNTS PER MONTH FOR EACH CATEGORY
         </h1>
         <div id="CategoryList">
@@ -106,12 +114,12 @@ const Main = () => {
             return (
               <div
                 key={index}
-                className="flex flex-row p-4 my-2 border-solid border-2 border-grey rounded-sm text-xs"
+                className="flex flex-row p-2 items-baseline my-2 border-solid border-2 border-grey rounded-sm text-xs"
               >
                 <input
                   name="categoryName"
                   type="text"
-                  className="text-xs"
+                  className="text-xs w-24 mr-4"
                   placeholder="Enter a category here"
                   value={el.categoryName}
                   onChange={(e) => {
@@ -121,25 +129,17 @@ const Main = () => {
                 <input
                   name="monthlyAmount"
                   type="number"
-                  className="relative outline-none rounded py-1 px-2 w-20 bg-white shadow text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:shadow-outline"
+                  className="flex items-baseline relative outline-none rounded py-1 px-2 w-12 bg-white shadow text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:shadow-outline"
                   placeholder="$0"
                   value={el.monthlyAmount}
                   onChange={(e) => {
                     handleAmountChange(e.target.value, index); // * send off the value of the input and the index to our handleAmountChange function
                   }}
                 ></input>{" "}
-                /monthly
+                &nbsp;&nbsp;/monthly
               </div>
             );
           })}
-        </div>
-      </div>
-      <div className="right-side">
-        <div id="pieChart" className="p-4">
-          <PieChart data={chartOptions} />
-        </div>
-        <div className="font-bold text-center ">
-          TOTAL EST: ${runningTotal} PER YEAR
         </div>
       </div>
     </div>
