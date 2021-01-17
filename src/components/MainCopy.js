@@ -79,9 +79,9 @@ const Main = () => {
   }
 
   return (
-    <div className="m-4 p-4 overflow-hidden flex flex-col text-black bg-white shadow-md">
+    <div className="p-4 flex flex-col text-black bg-white shadow-md lg:m-10">
       <div className="p-2">
-        <div id="pieChart" className="p-2">
+        <div id="pieChart" className="p-1 w-30 m-auto">
           <PieChart data={chartOptions} />
         </div>
         <div className="my-2 text-xs font-bold text-center">
@@ -114,7 +114,7 @@ const Main = () => {
             return (
               <div
                 key={index}
-                className="flex flex-row p-2 items-baseline my-2 border-solid border-2 border-grey rounded-sm text-xs"
+                className="flex flex-row p-2 items-baseline my-2 border-solid border-2 border-grey rounded-sm text-xs w-60 "
               >
                 <input
                   name="categoryName"
