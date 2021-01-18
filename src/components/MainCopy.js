@@ -79,20 +79,20 @@ const Main = () => {
   }
 
   return (
-    <div className="p-4 flex flex-col text-black bg-white shadow-md lg:m-10">
-      <div className="p-2">
-        <div id="pieChart" className="p-1 w-30 m-auto">
+    <div className="p-4 flex flex-col md:flex-row-reverse text-black bg-white shadow-md sm:p-8">
+      <div className="p-2 m-auto h-3/6 w-3/6 md:p-4">
+        <div id="pieChart" className="p-1 m-auto">
           <PieChart data={chartOptions} />
         </div>
         <div className="my-2 text-xs font-bold text-center">
           TOTAL EST: ${runningTotal} PER YEAR
         </div>
       </div>
-      <div className="">
+      <div className="md:m-5">
         <div className="">
           <div className="flex flex-column">
             <button
-              className="flex text-sm p-1 items-center border-solid border-2 border-gray-50 rounded"
+              className="flex tracking-widest text-sm p-1 items-center border-solid border-2 border-gray-50 rounded md:p-3 md:text-lg"
               onClick={() => {
                 addEmptyCategory();
               }}
@@ -102,7 +102,7 @@ const Main = () => {
                 className="w-6 text-black font-bold"
                 alt="Add a Category"
               />
-              &nbsp;&nbsp;ADD CATEGORY
+              &ensp;<strong>ADD CATEGORY</strong>
             </button>
           </div>
         </div>
@@ -114,13 +114,13 @@ const Main = () => {
             return (
               <div
                 key={index}
-                className="flex flex-row p-2 items-baseline my-2 border-solid border-2 border-grey rounded-sm text-xs w-60 "
+                className="flex flex-row p-3 items-baseline my-2 border-solid border-2 border-gray-50 rounded-sm text-xs w-72 md:rounded-lg lg:text-sm lg:w-80"
               >
                 <input
                   name="categoryName"
                   type="text"
-                  className="text-xs w-24 mr-4"
-                  placeholder="Enter a category here"
+                  className="text-xs w-32 mr-4 tracking-widest lg:text-sm lg:w-40"
+                  placeholder="Enter a category"
                   value={el.categoryName}
                   onChange={(e) => {
                     handleNameChange(e.target.value, index); // * send off the value of the input and the index to our handleNameChangefunction
@@ -129,14 +129,14 @@ const Main = () => {
                 <input
                   name="monthlyAmount"
                   type="number"
-                  className="flex items-baseline relative outline-none rounded py-1 px-2 w-12 bg-white shadow text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:shadow-outline"
+                  className="flex tracking-widest items-baseline relative outline-none rounded py-1 px-2 w-12 bg-white shadow text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:shadow-outline lg:text-sm"
                   placeholder="$0"
                   value={el.monthlyAmount}
                   onChange={(e) => {
                     handleAmountChange(e.target.value, index); // * send off the value of the input and the index to our handleAmountChange function
                   }}
                 ></input>{" "}
-                &nbsp;&nbsp;/monthly
+                &nbsp;&nbsp;/MONTH
               </div>
             );
           })}
