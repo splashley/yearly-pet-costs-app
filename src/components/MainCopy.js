@@ -6,14 +6,15 @@ import { PieChart } from "react-minimal-pie-chart";
 
 const Main = () => {
  
-
-  const [list, setList] = React.useState([
+  const defaultValue = [
     {
       categoryName: "",
       monthlyAmount: "",
       color: generateRandomColour(), // ! essentialy we are just calling our color function when initiating a new category
     },
-  ]);
+  ]
+
+  const [list, setList] = React.useState(defaultValue);
   const [runningTotal, setRunningTotal] = React.useState(0); // * get runningTotal in state
   const [chartOptions, setChartOptions] = React.useState([]);
 
@@ -75,22 +76,16 @@ const Main = () => {
   const addEmptyCategory = React.useCallback(() => {
     const totalCategories = list.length;
 
-    const defaultValue = [
-      {
-        categoryName: "",
-        monthlyAmount: "",
-        color: generateRandomColour(), // ! essentialy we are just calling our color function when initiating a new category
-      },
-    ];
+
 
     if (totalCategories > 10) {
       alert("You have reached the max");
     } else {
-      const newArr = [...list, defaultValue]; // * create a new array using the existing list and the default value. We have to use the spread operator here on the default value because it is initialized as an array
+      const newArr = [...list, ...defaultValue]; // * create a new array using the existing list and the default value. We have to use the spread operator here on the default value because it is initialized as an array
       setList(newArr); // * set our state with the new default value
      
     }
-  }, [ list]);
+  }, [defaultValue, list]);
 
   function generateRandomColour() {
     const randomColour = Math.floor(Math.random() * 16777215).toString(16);
@@ -99,7 +94,6 @@ const Main = () => {
 
   const removeCategory = React.useCallback(
     (index) => {
-      console.log(index);
       let array = [...list];
       array.splice(index, 1);
       setList(array);
@@ -111,7 +105,6 @@ const Main = () => {
 
   return (
     <div className="p-4 flex flex-col md:flex-row-reverse text-black bg-white shadow-md sm:p-8">
-      {console.log(runningTotal)}
       <div className="p-2 m-auto h-3/6 w-3/6 md:p-4">
         <div id="pieChart" className="p-1 m-auto">
           <PieChart data={chartOptions} />
