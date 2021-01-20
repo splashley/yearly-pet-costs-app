@@ -2,16 +2,18 @@ import React from "react";
 import addBtn from "../assets/addBtn.png";
 import { PieChart } from "react-minimal-pie-chart";
 
+
+
 const Main = () => {
-  const defaultValue = [
+ 
+
+  const [list, setList] = React.useState([
     {
       categoryName: "",
       monthlyAmount: "",
       color: generateRandomColour(), // ! essentialy we are just calling our color function when initiating a new category
     },
-  ];
-
-  const [list, setList] = React.useState(defaultValue);
+  ]);
   const [runningTotal, setRunningTotal] = React.useState(0); // * get runningTotal in state
   const [chartOptions, setChartOptions] = React.useState([]);
 
@@ -34,7 +36,7 @@ const Main = () => {
   // * Simple function to loop through the list and add up the monthlyAmount values
   // *
 
-  const updateTotal = React.useCallback(() => {
+  React.useEffect(() => {
     let total = 0;
     list.forEach((item) => {
       if (!item.monthlyAmount) return; // * If we see a new category with an undefined monthlyAmount value, move along
@@ -62,24 +64,33 @@ const Main = () => {
       let array = [...list]; // * creates the clone of the list state so we aren't mutating state directly - big no no
       array[index].monthlyAmount = amount; // * inside your cloned state, update the monthlyAmount using the index we passed in to our new value
       setList(array); // * after we updated our new value, update your state with the new data
-      updateTotal(); // * update our totals value when an amount changes
+     
       buildChartOptions();
     },
-    [buildChartOptions, updateTotal, list]
+    [buildChartOptions, list]
   );
 
   // * moving this logic to a separate function to clean up html
 
   const addEmptyCategory = React.useCallback(() => {
     const totalCategories = list.length;
+
+    const defaultValue = [
+      {
+        categoryName: "",
+        monthlyAmount: "",
+        color: generateRandomColour(), // ! essentialy we are just calling our color function when initiating a new category
+      },
+    ];
+
     if (totalCategories > 10) {
       alert("You have reached the max");
     } else {
-      const newArr = [...list, ...defaultValue]; // * create a new array using the existing list and the default value. We have to use the spread operator here on the default value because it is initialized as an array
+      const newArr = [...list, defaultValue]; // * create a new array using the existing list and the default value. We have to use the spread operator here on the default value because it is initialized as an array
       setList(newArr); // * set our state with the new default value
-      updateTotal();
+     
     }
-  }, [updateTotal, list, defaultValue]);
+  }, [ list]);
 
   function generateRandomColour() {
     const randomColour = Math.floor(Math.random() * 16777215).toString(16);
@@ -93,13 +104,14 @@ const Main = () => {
       array.splice(index, 1);
       setList(array);
       buildChartOptions();
-      updateTotal();
+     
     },
-    [buildChartOptions, updateTotal, list]
+    [buildChartOptions,list]
   );
 
   return (
     <div className="p-4 flex flex-col md:flex-row-reverse text-black bg-white shadow-md sm:p-8">
+      {console.log(runningTotal)}
       <div className="p-2 m-auto h-3/6 w-3/6 md:p-4">
         <div id="pieChart" className="p-1 m-auto">
           <PieChart data={chartOptions} />
